@@ -2,7 +2,7 @@
 
 Official website for **The Fitness Zone**, one of the best-rated unisex gyms in Azamgarh, Uttar Pradesh.
 
-🌐 **Live Site:** `https://yourusername.github.io/fitness-zone`
+🌐 **Live Site:** `https://ramboraju.github.io/the-fitness-zone`
 
 ---
 
@@ -49,7 +49,7 @@ Go to [github.com](https://github.com) and sign up for a free account.
 ### Step 5 — Your Site is Live! 🎉
 After 1–2 minutes your site will be live at:
 ```
-https://yourusername.github.io/fitness-zone
+https://ramboraju.github.io/the-fitness-zone
 ```
 
 ---
