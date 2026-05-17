@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fitness Zone – Azamgarh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #f59e0b;
+      --gold-light: #fcd34d;
+      --dark: #0a0a0a;
+      --dark2: #111827;
+      --dark3: #1f2937;
+      --gray: #6b7280;
+      --white: #f9fafb;
+    }
+
+    *, *::before, *::after {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245,158,11,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 2px;
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(245,158,11,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* big decorative letter */
+    .hero::after {
+      content: 'FZ';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(200px, 40vw, 480px);
+      color: rgba(245,158,11,0.04);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -10px;
+    }
+
+    .logo-wrap {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .logo-ring {
+      width: 148px; height: 148px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      padding: 4px;
+      display: inline-block;
+      box-shadow: 0 0 40px rgba(245,158,11,0.35), 0 0 80px rgba(245,158,11,0.12);
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 30px rgba(245,158,11,0.3), 0 0 60px rgba(245,158,11,0.1); }
+      50%       { box-shadow: 0 0 50px rgba(245,158,11,0.5), 0 0 100px rgba(245,158,11,0.2); }
+    }
+
+    .logo-ring img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(245,158,11,0.12);
+      border: 1px solid rgba(245,158,11,0.4);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 99px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(56px, 12vw, 110px);
+      line-height: 0.95;
+      letter-spacing: 4px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .hero h1 span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 20px);
+      color: #9ca3af;
+      max-width: 640px;
+      margin: 18px auto 36px;
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    .btn-group { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #000;
+      box-shadow: 0 4px 24px rgba(245,158,11,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(245,158,11,0.55);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: rgba(245,158,11,0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat span {
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: var(--gray);
+      text-transform: uppercase;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 90px 24px;
+      max-width: 1140px;
+      margin: auto;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .section-title span { color: var(--gold); }
+
+    .section-desc {
+      color: #9ca3af;
+      font-size: 17px;
+      max-width: 600px;
+      line-height: 1.8;
+    }
+
+    .centered { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(245,158,11,0.3), transparent);
+      margin: 0 auto;
+      max-width: 900px;
+    }
+
+    /* ─── FEATURES GRID ─── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: var(--dark3);
+      border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 12px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feature-card:hover { border-color: rgba(245,158,11,0.4); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p { color: #9ca3af; line-height: 1.7; font-size: 15px; }
+
+    /* ─── PLANS ─── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 50px;
+      align-items: start;
+    }
+
+    .plan-card {
+      background: var(--dark3);
+      border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 14px;
+      padding: 36px 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .plan-card.popular {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #1f2937 0%, #111827 100%);
+      transform: scale(1.04);
+      box-shadow: 0 0 50px rgba(245,158,11,0.2);
+    }
+
+    .plan-card:hover { transform: translateY(-6px); }
+    .plan-card.popular:hover { transform: scale(1.04) translateY(-6px); }
+
+    .popular-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--gold);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+    }
+
+    .plan-name {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .plan-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .plan-price sup { font-size: 32px; vertical-align: top; margin-top: 12px; }
+    .plan-duration { color: var(--gray); font-size: 14px; margin-bottom: 24px; }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .plan-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 15px;
+      color: #d1d5db;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      background: linear-gradient(135deg, #111827 0%, #0a0a0a 100%);
+      border-top: 1px solid rgba(245,158,11,0.2);
+      border-bottom: 1px solid rgba(245,158,11,0.2);
+      padding: 90px 24px;
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+
+    .contact-info h2 span { color: var(--gold); }
+
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-top: 28px;
+      padding: 20px;
+      background: var(--dark3);
+      border-radius: 10px;
+      border: 1px solid rgba(245,158,11,0.1);
+    }
+
+    .contact-row .icon { font-size: 24px; flex-shrink: 0; }
+
+    .contact-row strong {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-row p { color: #d1d5db; font-size: 15px; line-height: 1.6; }
+
+    .contact-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+      padding-top: 28px;
+    }
+
+    .contact-cta p {
+      color: #9ca3af;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #25d366;
+      color: #fff;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+    }
+
+    .call-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 8px;
+      border: 2px solid var(--gold);
+      transition: background 0.2s;
+    }
+
+    .call-btn:hover { background: rgba(245,158,11,0.08); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 28px 24px;
+      color: var(--gray);
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    footer span { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      nav { padding: 14px 20px; }
+      .hero h1 { letter-spacing: 2px; }
+      .hero-stats { gap: 28px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+      .plan-card.popular { transform: none; }
+      .plan-card.popular:hover { transform: translateY(-4px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">The Fitness Zone</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#plans">Plans</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="logo-wrap">
+      <div class="logo-ring">
+        <img src="logo.jpeg" alt="The Fitness Zone Logo" />
+      </div>
+    </div>
+
+    <div class="hero-badge">⭐ 4.8 Rated · Azamgarh's #1 Unisex Gym</div>
+
+    <h1>THE FITNESS<br /><span>ZONE</span></h1>
+
+    <p class="hero-sub">
+      Modern equipment. Certified trainers. Real results.<br />
+      Strength, fat loss &amp; personal coaching — all under one roof.
+    </p>
+
+    <div class="btn-group">
+      <a href="#plans" class="btn btn-primary">View Plans</a>
+      <a href="#contact" class="btn btn-outline">Contact Us</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <strong>4.8★</strong>
+        <span>Google Rating</span>
+      </div>
+      <div class="stat">
+        <strong>106+</strong>
+        <span>Happy Members</span>
+      </div>
+      <div class="stat">
+        <strong>6</strong>
+        <span>Days a Week</span>
+      </div>
+      <div class="stat">
+        <strong>5AM</strong>
+        <span>Early Open</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <span class="section-label">Who We Are</span>
+    <h2 class="section-title">Azamgarh's <span>Premier</span><br />Fitness Destination</h2>
+    <p class="section-desc">
+      Located near Belaisa Sabji Mandi on Azamgarh–Varanasi Road, The Fitness Zone is a top-rated
+      unisex gym in Azamgarh, Uttar Pradesh. Our spacious workout area, modern equipment,
+      and professional trainers create an environment where every member thrives — from beginners
+      to seasoned athletes.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <section class="section" id="features">
+    <span class="section-label centered">Why Choose Us</span>
+    <h2 class="section-title centered">Everything You Need<br />to <span>Succeed</span></h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🏋️</span>
+        <h3>Modern Equipment</h3>
+        <p>Advanced machines and free weights for every type of training — strength, cardio, and functional fitness.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">👨‍🏫</span>
+        <h3>Certified Trainers</h3>
+        <p>Expert, certified coaches who design personalised programs to match your specific fitness goals.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🥗</span>
+        <h3>Diet Guidance</h3>
+        <p>Nutrition advice and customised diet plans that complement your workout for faster, lasting results.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🚹🚺</span>
+        <h3>Unisex Facility</h3>
+        <p>A welcoming, inclusive environment designed for both men and women to train comfortably side by side.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🔥</span>
+        <h3>Fat Loss Programs</h3>
+        <p>Targeted fat-loss protocols combining cardio, resistance training, and smart nutrition for real change.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">⭐</span>
+        <h3>4.8★ Rated</h3>
+        <p>Over 106 positive Google reviews speak for themselves — we deliver results that members rave about.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLANS -->
+  <section class="section" id="plans">
+    <span class="section-label centered">Membership</span>
+    <h2 class="section-title centered">Simple, Honest <span>Pricing</span></h2>
+    <p class="section-desc centered">No hidden fees. Choose the plan that fits your commitment and budget.</p>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <p class="plan-name">Monthly</p>
+        <div class="plan-price"><sup>₹</sup>999</div>
+        <p class="plan-duration">per month</p>
+        <ul class="plan-features">
+          <li>Full Gym Access</li>
+          <li>All Equipment</li>
+          <li>Locker Facility</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center;">Get Started</a>
+      </div>
+
+      <div class="plan-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <p class="plan-name">Quarterly</p>
+        <div class="plan-price"><sup>₹</sup>2499</div>
+        <p class="plan-duration">per 3 months</p>
+        <ul class="plan-features">
+          <li>Full Gym Access</li>
+          <li>Personalised Diet Plan</li>
+          <li>Trainer Support</li>
+          <li>Progress Tracking</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="width:100%;text-align:center;">Get Started</a>
+      </div>
+
+      <div class="plan-card">
+        <p class="plan-name">Yearly</p>
+        <div class="plan-price"><sup>₹</sup>6999</div>
+        <p class="plan-duration">per year</p>
+        <ul class="plan-features">
+          <li>Unlimited Gym Access</li>
+          <li>Personal Training Sessions</li>
+          <li>Diet + Nutrition Plan</li>
+          <li>Priority Support</li>
+          <li>Best Value</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;text-align:center;">Get Started</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <span class="section-label">Reach Out</span>
+        <h2>Get In <span>Touch</span></h2>
+
+        <div class="contact-row">
+          <span class="icon">📍</span>
+          <div>
+            <strong>Location</strong>
+            <p>Near Belaisa Sabji Mandi,<br />Azamgarh – Varanasi Road,<br />Azamgarh, UP 276128</p>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <span class="icon">⏰</span>
+          <div>
+            <strong>Hours</strong>
+            <p>Monday – Saturday: 5:00 AM – 10:00 PM<br />Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-cta">
+        <p>
+          Ready to transform your body? Reach out on WhatsApp or give us a call —
+          we'll help you pick the right plan and get started today.
+        </p>
+
+        <a href="https://wa.me/919452726979" class="whatsapp-btn" target="_blank" rel="noopener">
+          💬 WhatsApp Us
+        </a>
+
+        <a href="tel:+918840923426" class="call-btn">
+          📞 +91 88409 23426
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 <span>The Fitness Zone</span>. All Rights Reserved. · Azamgarh, Uttar Pradesh
+  </footer>
+
+</body>
+</html>
